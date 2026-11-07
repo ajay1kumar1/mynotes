@@ -1,0 +1,323 @@
+Build apps with Claude Code without a paid plan
+Vibe Coding
+13-step guide, 3 guides, 10 tools
+Run the real Claude Code app on free AI models: start in ten minutes with one free key, add OmniRoute so it never stops, then try the free Kilo Code bonus.
+
+
+Save
+Copy link
+Step-by-step guide
+1
+Before you start
+A Windows computer. The Kilo Code bonus also works on a Mac.
+Free accounts at OpenRouter and NVIDIA, and a Google account. No card, and no
+paid Claude plan.
+
+About 10 minutes for Steps 1 and 2, 30 minutes for Steps 3 to 7, and 20 minutes for
+the bonus.
+
+2
+Get a free OpenRouter key
+Claude Code is the app that builds things on your computer. The AI model behind it is the only part that costs money, so you’ll swap in free models. OpenRouter gives you dozens of them with one key.
+
+Go to https://openrouter.ai and sign up for free.
+Click API Keys, then Create Key.
+Give it a name and set it to expire in 7 days, so an old key can never be misused.
+Copy the key and save it somewhere safe. OpenRouter shows it only once.
+An API key works like a password. Never share it, show it on screen or paste it into an AI chat.
+3
+Start Claude Code on free models
+Make a new folder on your Desktop called free-claude-code.
+Open it, right-click an empty space and click Open in Terminal.
+Copy the block below, replace YOUR_KEY_HERE with your OpenRouter key, paste
+it into the terminal and press Enter.
+
+Claude Code opens, with no login. Type /status to check it says openrouter.ai.
+Start Claude Code on OpenRouter (PowerShell)
+
+Copy
+$env:ANTHROPIC_BASE_URL = "https://openrouter.ai/api"
+$env:ANTHROPIC_AUTH_TOKEN = "YOUR_KEY_HERE"
+$env:ANTHROPIC_API_KEY = ""
+$env:ANTHROPIC_MODEL = "openrouter/free"
+$env:ANTHROPIC_DEFAULT_OPUS_MODEL = "openrouter/free"
+$env:ANTHROPIC_DEFAULT_SONNET_MODEL = "openrouter/free"
+$env:ANTHROPIC_DEFAULT_HAIKU_MODEL = "openrouter/free"
+claude
+You now have Claude Code running for $0. One limit: OpenRouter’s free models allow 50 requests a day, and Claude Code uses many for each task. Steps 3 to 6 fix that.
+
+The /model menu still says Opus, Sonnet and Haiku. They’re only seat names, and every seat runs a free model. Your real bill, at https://openrouter.ai/activity, shows $0.00.
+4
+Install OmniRoute with Antigravity
+OmniRoute connects all your free models to Claude Code, and when one hits its limit, it switches to the next. Antigravity, a free coding app from Google, installs everything for you.
+
+Download Antigravity from https://antigravity.google and sign in with your Google
+account.
+
+Paste Prompt 1. Antigravity asks before it runs anything, so read each request before
+you click Allow.
+
+When it’s done, click the localhost link it gives you. The OmniRoute dashboard opens.
+Log in with the default password, changeme, then change it in Settings.
+Prompt 1: Install Claude Code and OmniRoute
+
+Copy
+Hi! I want to use Claude Code for free on my Windows laptop. Install Claude
+Code and OmniRoute (github.com/cheaper-inference/OmniRoute), start OmniRoute
+on localhost, and open its dashboard. If anything fails, fix it and
+continue.
+If anything goes wrong, at any step, copy the error, paste it into Antigravity and say “fix this”.
+5
+Connect your free models
+Go to https://build.nvidia.com, sign up for free and create an API key.
+In the OmniRoute dashboard, click Providers.
+Add NVIDIA NIM, paste your NVIDIA key and click Check.
+Add OpenRouter, paste your key from Step 1 and click Check.
+Add Antigravity and sign in with your Google account. Your dashboard now shows
+them all as connected.
+
+OmniRoute also lists Kiro, which gives you real Claude models. Its free tier is only 50 credits a month, and OmniRoute itself warns that Kiro’s terms don’t allow this kind of use. Add it only at your own risk.
+6
+Build a combo that switches models
+A combo is your list of models in one place. When one runs out, OmniRoute moves to the next, and Claude Code keeps working.
+
+Click Combos, then Create your first combo, and name it Claude.
+In Steps, pick NVIDIA and the model gpt-oss-120b, then click Add.
+Add OpenRouter the same way, with a model whose name ends in :free.
+For the routing strategy, pick Intelligent Auto. It picks the best model for every
+request.
+
+In the candidate pool, select every provider you connected, then click Create and
+Save.
+
+Don’t pick OpenRouter’s auto model. It can choose paid models.
+7
+Make a one-click Claude Code shortcut
+In the OmniRoute dashboard, go to API Keys, create a key and copy it.
+Paste Prompt 2 into Antigravity.
+When Notepad opens, paste your key, save and close it, then tell Antigravity to
+continue.
+
+Two icons appear on your Desktop: Free Claude Code and OmniRoute Dashboard.
+Prompt 2: Save your key and make shortcuts
+
+Copy
+Hi! OmniRoute is installed and running on my Windows laptop. I've connected
+my providers and created a combo called "Claude". Please save my OmniRoute
+API key as the OMNIROUTE_API_KEY environment variable (open Notepad so I can
+paste the key myself, never in this chat), create an "omniroute-work" folder
+on my Desktop, and create two Desktop shortcuts: "Free Claude Code" (starts
+OmniRoute if needed, then runs omniroute run claude --model Claude in that
+folder) and "OmniRoute Dashboard" (opens the dashboard). If anything fails,
+fix it and continue.
+Antigravity opens Notepad for the key so it never goes into the chat.
+8
+Build your first app
+Double-click Free Claude Code on your Desktop.
+Paste Prompt 3 and press Enter.
+Claude Code asks you three questions: web or desktop app, where to save your
+notes, and which features matter most. Answer them.
+
+It plans the app, writes the code and gives you a localhost address. Open it in your
+browser to use your app.
+
+Prompt 3: Build a notes app
+
+Copy
+Design me a simple personal notetaking application.
+If Claude Code shows API Error 400, Invalid model ID, it picked a paid model. Paste Prompt 4 into Antigravity to hide the paid ones.
+
+Prompt 4: Show only free models
+
+Copy
+OmniRoute runs on my laptop and Claude Code connects through it. The /model
+menu shows paid models too, and picking them gives errors. Hide the paid
+models in OmniRoute so only free ones show, and keep my combo "Claude" as
+the default. Then test it. If anything fails, fix it and continue.
+Leave the /model menu alone. Your combo picks the best free model for every request.
+9
+Run it offline with Ollama (optional)
+If your computer has a graphics card with at least 6 GB of memory (VRAM), you can run a free model on it. It’s slower, but it’s private, unlimited and works with your Wi-Fi off.
+
+Download Ollama from https://ollama.com and install it.
+In Ollama, click Settings and drag Context length to 64K. Without this, the model
+prints code in the chat instead of building files.
+
+Find your VRAM and RAM: press Ctrl + Shift + Esc and open the Performance tab.
+Paste Prompt 5 into ChatGPT with your numbers, then Prompt 6.
+
+Paste Prompt 7 into Antigravity, with the model ChatGPT picked. Then close Ollama
+and open it again.
+
+In Ollama, click Apps, then the Claude Code tile. This copies the start command.
+Open your free-claude-code folder in Terminal, press Ctrl + V and Enter, and pick
+your model. Claude Code now runs on your own computer.
+
+Prompt 5: Find the best model for your computer
+
+Copy
+I have 12 GB of VRAM and 32 GB of RAM. I want to run a local model on Ollama
+for coding. Select the best model for my use case and reply with its exact
+Ollama name.
+Prompt 6: Check it’s the newest choice
+
+Copy
+Is this still the absolute best choice as of the current model releases?
+Prompt 7: Install the model
+
+Copy
+I am running AI models locally. Install the model qwen3.5:9b and set up
+everything so it works with Ollama.
+Start Claude Code with Ollama next time
+
+Copy
+ollama launch claude
+Only use models without the cloud label. Cloud models run on Ollama’s servers and cost money.
+10
+Install Kilo Code in VS Code (optional)
+Bonus: Kilo Code is a different free AI coding assistant that lives inside VS Code. It isn’t Claude Code, but it’s the easiest free setup to use every day.
+
+Download VS Code from https://code.visualstudio.com, install it and pick a theme.
+Make a new folder on your Desktop called my-game. In VS Code, click File, then
+Open Folder, choose my-game and trust it.
+
+Click Extensions, search Kilo Code and click Install.
+Click the new Kilo Code icon on the left and sign in. Its chat opens, with free models
+such as Auto Free already in the model menu.
+
+11
+Connect free NVIDIA models (optional)
+Kilo Code’s built-in free models change often. NVIDIA gives you strong free models with a generous limit of about 40 requests a minute.
+
+Use the NVIDIA key you created in Step 4.
+In Kilo Code, click Settings, then Providers, then Custom providers, then Connect.
+Enter nvidia as the provider ID, the base URL below and your NVIDIA key.
+Click Deselect all, then pick Nemotron 3 Ultra 550B, GLM 5.3 and GLM 5.3 Flash.
+Leave paid models, such as Kimi K2.6, unticked.
+
+Turn on Reasoning, turn on images only for models that can read images, and click
+Submit. The three models now appear in the model menu.
+
+NVIDIA base URL
+
+Copy
+https://integrate.api.nvidia.com/v1
+NVIDIA’s free access is meant for testing and personal projects.
+12
+Build a space shooter with one prompt (optional)
+In Kilo Code’s model menu, pick GLM 5.3 Flash.
+Paste Prompt 8 and press Enter. Kilo Code writes the whole game into one file,
+neon-void.html.
+
+Prompt 8: Build the NEON VOID game
+
+Copy
+Build a complete, original 2D space shooter game called NEON VOID in a single file
+named neon-void.html. Plain HTML, CSS and JavaScript with the Canvas API — no
+frameworks, no libraries, no image or sound files, no network requests. Everything
+drawn and generated in code, all in that one file. It must run by double-clicking the
+file.
+1. Look & atmosphere
+- Background #050514 with three parallax layers of scrolling stars; a few stars
+twinkle.
+- Neon glow on everything (canvas shadowBlur 15–25): player ship cyan #00E5FF,
+enemies magenta #FF2BD6, bullets yellow #FFE14D, particles white. HUD in a monospace
+font.
+- The player ship is a sleek triangle with a flickering engine flame; enemies are
+three distinct angular shapes.
+2. Start screen
+- Huge glowing pulsing title "NEON VOID", controls on one line, "Press ENTER to
+start", saved high score — over the moving starfield.
+3. Controls & game feel
+- Move with arrow keys or WASD (speed ~420 px/s, slight ease), SPACE holds for
+autofire (8 shots/s, bullets 700 px/s, small muzzle flash).
+- Hits flash white; kills explode into 20–30 particles; big hits add a short screen
+shake; score pops up as floating "+10" text that fades.
+- After losing a life the ship blinks and is invincible for 2 seconds, and all enemy
+bullets on screen are cleared.
+4. Enemies & waves
+- Three enemy types: Drifter (flies straight down, 1 HP, +10), Weaver (sine-wave
+path, 1 HP, +15), Diver (aims at the player, 2 HP, +25).
+- Wave n spawns 6 + 2n enemies, slightly faster each wave (cap at 2× speed). A big
+glowing "WAVE N" banner shows for 1.5 s between waves.
+- Every 5th wave: "BOSS INCOMING" flashes red with an alarm. The boss slides side to
+side at the top, has a visible health bar, fires a 5-bullet spread every 1.2 s, and
+below half health also fires aimed shots. 40 HP + 20 per boss round, +250 points,
+always drops a power-up.
+5. Power-ups
+- 1 in 6 destroyed enemies drops a slowly falling glowing square labeled T, S or R:
+Triple shot, Shield (absorbs one hit), Rapid fire (double fire rate). Each lasts 10
+seconds with a small countdown bar in the HUD.
+6. HUD, score, game over
+- Top bar: score, wave number, 3 lives as small ship icons, active power-up timers.
+- High score saved in localStorage under "neonvoid.highscore"; show it on the start
+and game-over screens.
+- Game over: big "GAME OVER", final score, high score (with a "NEW HIGH SCORE!"
+state), "Press ENTER to restart". Restart resets everything except the high score.
+7. Sound
+- Retro sound effects generated with the Web Audio API: shoot, explosion, power-up,
+boss alarm, game over. Create and resume the AudioContext on the first keypress so
+browsers allow audio. M toggles mute.
+8. Technical quality — follow these exactly
+- One single requestAnimationFrame loop with delta-time movement; a simple state
+machine: START → PLAYING → GAMEOVER.
+- P pauses with a "PAUSED" overlay; the game also pauses when the tab is hidden.
+- The canvas always fills the window and handles resizing cleanly.
+- Restarting must never create a second game loop or speed the game up.
+- Zero console errors.
+- Before you finish, re-read the whole file once and fix any bug you find —
+especially: restart creating a double loop, audio not starting because the
+AudioContext was created before user input, and the high score not loading on first
+run.
+- When you're done, tell me how to open and play it.
+When it finishes, open the my-game folder and double-click neon-void.html. The
+game opens in your browser.
+
+Press Enter to start. Move with the arrow keys and hold Space to fire. A boss arrives
+every fifth wave.
+
+Want changes? Ask for one thing at a time, in plain words, and play it again after each change.
+13
+Keep building when a model runs out (optional)
+Every free model has a limit. When you hit one, switch to another and carry on. Nothing is lost.
+
+If a model stops mid-task, pick another one from the model menu. It reads the whole
+chat and continues.
+
+Before you start a new chat, type /memory on. Kilo Code keeps notes on your project,
+so any model can pick up where the last one stopped.
+
+For even more free models, add OpenRouter the same way as NVIDIA, with your key
+from Step 1 and the base URL below.
+
+OpenRouter base URL
+
+Copy
+https://openrouter.ai/api/v1
+If /memory on doesn’t work in your version of Kilo Code, paste Prompt 9 instead.
+
+Prompt 9: Give Kilo Code a memory
+
+Copy
+Create a file called AGENTS.md in this project. After every step, update it
+with what we're building, what's done, what's next, and any decisions we
+made. Before starting any task, read it first.
+You can also add Gemini with a free key from https://aistudio.google.com. On its free tier, Google may use your prompts to improve its products, so keep private code out.
+Templates and guides
+Your OpenRouter usage and bill
+openrouter.ai
+Ollama model library
+ollama.com
+Kilo Code memory guide
+kilo.ai
+Tools used
+Claude Code
+OpenRouter
+Antigravity
+OmniRoute
+NVIDIA Build
+Ollama
+ChatGPT
+VS Code
+Kilo Code
+Google AI Studio
