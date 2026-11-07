@@ -1,0 +1,16 @@
+python-dotenv
+langchain
+langchain-community
+langchain-huggingface
+sentence-transformers
+numpy
+torch
+transformers
+scipy
+scikit-learn
+pandas
+tqdm
+matplotlib
+pillow
+opencv-python
+ipykernel
