@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+__pycache__/
+venv/
+.env
+*.pyc
+
+# Docker
+.docker/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+frontend/build/
+frontend/dist/

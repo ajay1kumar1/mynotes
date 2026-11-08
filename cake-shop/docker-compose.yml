@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: cake-shop-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: cake_shop
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - cake-network
+
+  backend:
+    build: ./backend
+    container_name: cake-shop-backend
+    ports:
+      - "8000:8000"
+    environment:
+      MONGODB_URL: mongodb://mongodb:27017/cake_shop
+      DATABASE_NAME: cake_shop
+      SECRET_KEY: dev-secret-key-change-in-production
+      DEBUG: "True"
+    depends_on:
+      - mongodb
+    networks:
+      - cake-network
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    container_name: cake-shop-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - cake-network
+
+volumes:
+  mongo_data:
+
+networks:
+  cake-network:
+    driver: bridge

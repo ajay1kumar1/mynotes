@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:7.0
+    ports: ["27017:27017"]
+    environment:
+      MONGO_INITDB_DATABASE: netflix_clone
+    volumes: ["mongo_data:/data/db"]
+  backend:
+    build: ./backend
+    ports: ["8001:8000"]
+    environment:
+      MONGODB_URL: mongodb://mongodb:27017/netflix_clone
+      SECRET_KEY: netflix-secret-key
+    depends_on: [mongodb]
+  frontend:
+    build: ./frontend
+    ports: ["3001:80"]
+volumes:
+  mongo_data:

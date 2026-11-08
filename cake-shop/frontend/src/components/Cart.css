@@ -1,0 +1,32 @@
+.cart-page {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 60vh;
+  background: white;
+}
+.cart-page h1 {
+  color: #764ba2;
+  margin-bottom: 3rem;
+}
+.empty-cart {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 30px;
+  animation: pulse 2s infinite;
+}
+.cart-icon {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+.empty-cart p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
